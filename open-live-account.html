@@ -39,23 +39,26 @@
     }
     .registration-qualification-radio-group {
       border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin: 0 0 16px;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 0;
     }
     .registration-qualification-radio-group legend {
-      color: var(--text-primary, #f2f2f2);
+      color: var(--text-secondary, #b0b0b0);
       font-weight: 600;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       padding: 0;
-      font-size: 0.95rem;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
     }
     .registration-qualification-radio-group label {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-right: 18px;
+      gap: 6px;
+      margin-right: 16px;
       color: var(--text-secondary, #b0b0b0);
+      font-size: 14px;
     }
     </style>
 
@@ -134,6 +137,71 @@
         .mktg-mobile-btn { display: flex; }
     }
     </style>
+
+    <!-- 2-step form styles -->
+    <style>
+    .ola-step-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .ola-step-dots {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .ola-step-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #2A2A2A;
+        transition: background 0.3s ease;
+    }
+    .ola-step-dot.active { background: #D02C2D; }
+    .ola-step-line { width: 24px; height: 2px; background: #2A2A2A; }
+    .ola-step-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        color: #555555;
+        letter-spacing: 1px;
+    }
+    .ola-form-step { display: none; flex-direction: column; gap: 12px; }
+    .ola-form-step.active { display: flex; }
+    .ola-form-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    .ola-step-error {
+        font-size: 12px;
+        color: #FF3B4F;
+        padding: 7px 10px;
+        background: rgba(255,59,79,0.08);
+        border: 1px solid rgba(255,59,79,0.18);
+        border-radius: 6px;
+        margin: 0;
+    }
+    .ola-step-error[hidden] { display: none; }
+    .ola-step-buttons { display: flex; gap: 10px; }
+    .ola-btn-back {
+        flex: 0 0 auto;
+        padding: 12px 20px;
+        font-size: 13px;
+        font-weight: 600;
+        background: transparent;
+        color: rgba(242,242,242,0.6);
+        border: 1px solid #2A2A2A;
+        border-radius: 9999px;
+        cursor: pointer;
+        font-family: 'Manrope', sans-serif;
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .ola-btn-back:hover { border-color: #555555; color: #f2f2f2; }
+    .ola-step-buttons .registration-account-submit { flex: 1; }
+    .ola-qual-fields { display: flex; flex-direction: column; gap: 12px; }
+    @media (max-width: 480px) { .ola-form-grid-2 { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 <!-- GTM noscript -->
@@ -190,81 +258,109 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         novalidate
                         data-thank-you-url="./thank-you.html?kind=live"
                     >
-                        <div class="form-group">
-                            <label for="openLiveName">Full name</label>
-                            <input id="openLiveName" type="text" name="name"
-                                placeholder="Your full name" required autocomplete="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="openLiveEmail">Email address</label>
-                            <input id="openLiveEmail" type="email" name="email"
-                                placeholder="you@example.com" required autocomplete="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="openLivePhone">Phone</label>
-                            <input id="openLivePhone" type="tel" name="phone"
-                                placeholder="Include country code" required autocomplete="tel">
-                        </div>
-                        <div class="form-group">
-                            <label for="openLiveCountrySearch">Country / region</label>
-                            <div class="ib-search-select" id="openLiveCountryWrap">
-                                <input type="hidden" name="country" id="openLiveCountry" value="">
-                                <input type="text" id="openLiveCountrySearch" class="ib-search-select-input"
-                                    placeholder="Search country..."
-                                    autocomplete="off" autocorrect="off" spellcheck="false"
-                                    aria-autocomplete="list" aria-controls="openLiveCountryList"
-                                    aria-expanded="false" role="combobox" required>
-                                <ul class="ib-search-select-list" id="openLiveCountryList" role="listbox" hidden></ul>
+                        <!-- Step indicator -->
+                        <div class="ola-step-indicator">
+                            <div class="ola-step-dots">
+                                <div class="ola-step-dot active" id="olaStepDot1"></div>
+                                <div class="ola-step-line"></div>
+                                <div class="ola-step-dot" id="olaStepDot2"></div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="openLiveHeardAbout">How did you hear about us?</label>
-                            <select id="openLiveHeardAbout" name="heard_about" required>
-                                <option value="">Select an option</option>
-                                <option value="search">Search engine</option>
-                                <option value="social">Social media</option>
-                                <option value="friend">Friend or colleague</option>
-                                <option value="event">Webinar or event</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="registration-qualification-fields" data-qual-prefix="">
-                            <div class="form-group">
-                                <label for="openLiveLeadAge">What is your age?</label>
-                                <input type="number" id="openLiveLeadAge" name="lead_age" min="18" max="120" step="1" inputmode="numeric" placeholder="e.g. 28" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="openLiveLeadMonthlyIncome">What is your monthly income (USD equivalent)?</label>
-                                <input type="number" id="openLiveLeadMonthlyIncome" name="lead_monthly_income" min="0" step="1" inputmode="numeric" placeholder="e.g. 3000" required>
-                            </div>
-                            <fieldset class="registration-qualification-radio-group">
-                                <legend>Are you interested in opening a trading account?</legend>
-                                <label><input type="radio" name="lead_interested_account" value="yes" required><span>Yes</span></label>
-                                <label><input type="radio" name="lead_interested_account" value="no" required><span>No</span></label>
-                            </fieldset>
-                            <fieldset class="registration-qualification-radio-group">
-                                <legend>Are you ready to start trading now?</legend>
-                                <label><input type="radio" name="lead_ready_to_trade" value="yes" required><span>Yes</span></label>
-                                <label><input type="radio" name="lead_ready_to_trade" value="no" required><span>No</span></label>
-                            </fieldset>
-                            <fieldset class="registration-qualification-radio-group">
-                                <legend>Are you able to make the minimum deposit of $100?</legend>
-                                <label><input type="radio" name="lead_min_deposit_100" value="yes" required><span>Yes</span></label>
-                                <label><input type="radio" name="lead_min_deposit_100" value="no" required><span>No</span></label>
-                            </fieldset>
+                            <span class="ola-step-label" id="olaStepLabel">STEP 1 OF 2 — CONTACT</span>
                         </div>
 
-                        <div class="edu-lead-gate-consent">
-                            <label class="edu-lead-gate-check-label">
-                                <input type="checkbox" name="consent" id="openLiveConsent" value="1" required>
-                            </label>
-                            <span>I understand that trading carries risk and I agree to be contacted about this offer.
-                                I have read the <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
+                        <!-- Step 1: Contact details -->
+                        <div id="olaStep1" class="ola-form-step active">
+                            <div class="form-group">
+                                <label for="openLiveName">Full name</label>
+                                <input id="openLiveName" type="text" name="name"
+                                    placeholder="Your full name" required autocomplete="name">
+                            </div>
+                            <div class="ola-form-grid-2">
+                                <div class="form-group">
+                                    <label for="openLiveEmail">Email address</label>
+                                    <input id="openLiveEmail" type="email" name="email"
+                                        placeholder="you@example.com" required autocomplete="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="openLivePhone">Phone</label>
+                                    <input id="openLivePhone" type="tel" name="phone"
+                                        placeholder="Include country code" required autocomplete="tel">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="openLiveCountrySearch">Country / region</label>
+                                <div class="ib-search-select" id="openLiveCountryWrap">
+                                    <input type="hidden" name="country" id="openLiveCountry" value="">
+                                    <input type="text" id="openLiveCountrySearch" class="ib-search-select-input"
+                                        placeholder="Search country..."
+                                        autocomplete="off" autocorrect="off" spellcheck="false"
+                                        aria-autocomplete="list" aria-controls="openLiveCountryList"
+                                        aria-expanded="false" role="combobox" required>
+                                    <ul class="ib-search-select-list" id="openLiveCountryList" role="listbox" hidden></ul>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="openLiveHeardAbout">How did you hear about us?</label>
+                                <select id="openLiveHeardAbout" name="heard_about" required>
+                                    <option value="">Select an option</option>
+                                    <option value="search">Search engine</option>
+                                    <option value="social">Social media</option>
+                                    <option value="friend">Friend or colleague</option>
+                                    <option value="event">Webinar or event</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <p class="ola-step-error" id="olaStep1Error" role="alert" hidden></p>
+                            <button type="button" class="btn-primary registration-account-submit" id="olaNextBtn">
+                                Continue &rarr;
+                            </button>
                         </div>
-                        <p class="edu-lead-gate-error" id="openLivePageError" role="alert" hidden></p>
-                        <button type="submit" class="btn-primary registration-account-submit">
-                            Submit live account request
-                        </button>
+
+                        <!-- Step 2: Qualification + consent -->
+                        <div id="olaStep2" class="ola-form-step">
+                            <div class="registration-qualification-fields ola-qual-fields" data-qual-prefix="">
+                                <div class="ola-form-grid-2">
+                                    <div class="form-group">
+                                        <label for="openLiveLeadAge">Age</label>
+                                        <input type="number" id="openLiveLeadAge" name="lead_age" min="18" max="120" step="1" inputmode="numeric" placeholder="e.g. 28" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="openLiveLeadMonthlyIncome">Monthly income (USD)</label>
+                                        <input type="number" id="openLiveLeadMonthlyIncome" name="lead_monthly_income" min="0" step="1" inputmode="numeric" placeholder="e.g. 3000" required>
+                                    </div>
+                                </div>
+                                <fieldset class="registration-qualification-radio-group">
+                                    <legend>Interested in opening a trading account?</legend>
+                                    <label><input type="radio" name="lead_interested_account" value="yes" required><span>Yes</span></label>
+                                    <label><input type="radio" name="lead_interested_account" value="no" required><span>No</span></label>
+                                </fieldset>
+                                <fieldset class="registration-qualification-radio-group">
+                                    <legend>Ready to start trading now?</legend>
+                                    <label><input type="radio" name="lead_ready_to_trade" value="yes" required><span>Yes</span></label>
+                                    <label><input type="radio" name="lead_ready_to_trade" value="no" required><span>No</span></label>
+                                </fieldset>
+                                <fieldset class="registration-qualification-radio-group">
+                                    <legend>Able to make the minimum deposit of $100?</legend>
+                                    <label><input type="radio" name="lead_min_deposit_100" value="yes" required><span>Yes</span></label>
+                                    <label><input type="radio" name="lead_min_deposit_100" value="no" required><span>No</span></label>
+                                </fieldset>
+                            </div>
+                            <div class="edu-lead-gate-consent">
+                                <label class="edu-lead-gate-check-label">
+                                    <input type="checkbox" name="consent" id="openLiveConsent" value="1" required>
+                                </label>
+                                <span>I understand that trading carries risk and I agree to be contacted about this offer.
+                                    I have read the <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
+                            </div>
+                            <p class="edu-lead-gate-error" id="openLivePageError" role="alert" hidden></p>
+                            <div class="ola-step-buttons">
+                                <button type="button" class="ola-btn-back" id="olaBackBtn">&larr; Back</button>
+                                <button type="submit" class="btn-primary registration-account-submit">
+                                    Submit live account request
+                                </button>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
 
@@ -331,6 +427,70 @@ window.i18n = {
         return m[key] || key;
     }
 };
+</script>
+<script>
+(function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        var step1    = document.getElementById('olaStep1');
+        var step2    = document.getElementById('olaStep2');
+        var nextBtn  = document.getElementById('olaNextBtn');
+        var backBtn  = document.getElementById('olaBackBtn');
+        var dot1     = document.getElementById('olaStepDot1');
+        var dot2     = document.getElementById('olaStepDot2');
+        var label    = document.getElementById('olaStepLabel');
+        var errEl    = document.getElementById('olaStep1Error');
+        var card     = document.querySelector('.registration-account-card');
+
+        function showStep(n) {
+            if (n === 1) {
+                step1.classList.add('active');
+                step2.classList.remove('active');
+                dot1.classList.add('active');
+                dot2.classList.remove('active');
+                label.textContent = 'STEP 1 OF 2 — CONTACT';
+            } else {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+                dot1.classList.remove('active');
+                dot2.classList.add('active');
+                label.textContent = 'STEP 2 OF 2 — QUALIFICATION';
+                if (card) {
+                    var top = card.getBoundingClientRect().top + window.pageYOffset - 90;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            }
+        }
+
+        function validateStep1() {
+            var name    = (document.getElementById('openLiveName').value || '').trim();
+            var email   = (document.getElementById('openLiveEmail').value || '').trim();
+            var phone   = (document.getElementById('openLivePhone').value || '').trim();
+            var country = (document.getElementById('openLiveCountry').value || '').trim();
+            var heard   = (document.getElementById('openLiveHeardAbout').value || '');
+            if (!name)    return 'Please enter your full name.';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Please enter a valid email address.';
+            if (!phone)   return 'Please enter your phone number.';
+            if (!country) return 'Please select your country.';
+            if (!heard)   return 'Please tell us how you heard about us.';
+            return '';
+        }
+
+        nextBtn.addEventListener('click', function () {
+            var err = validateStep1();
+            if (err) {
+                errEl.textContent = err;
+                errEl.hidden = false;
+                return;
+            }
+            errEl.hidden = true;
+            showStep(2);
+        });
+
+        backBtn.addEventListener('click', function () {
+            showStep(1);
+        });
+    });
+})();
 </script>
 <script src="../assets/js/leads-utils.js" defer></script>
 <script src="../assets/js/country-iso-data.js" defer></script>
