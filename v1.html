@@ -2338,6 +2338,78 @@
         @media (max-width: 900px) {
             .hero-mobile-cta-bar { display: flex; }
         }
+
+        /* ══════════════════════════════════════════════
+           ALTERNATING LIGHT SECTION THEME
+        ══════════════════════════════════════════════ */
+        .section-light {
+            --bg-primary:    #F4F4F4;
+            --bg-secondary:  #EBEBEB;
+            --bg-card:       #FFFFFF;
+            --bg-card-hover: #F8F8F8;
+            --border:        #E0E0E0;
+            --border-light:  #D0D0D0;
+            --text-primary:  #0A0A0A;
+            --text-secondary:#4A4A4A;
+            --text-muted:    #888888;
+            background: #F4F4F4;
+            color: #0A0A0A;
+        }
+
+        /* Bonus section — keep radial glows visible on light bg */
+        .section-light.bonus-section {
+            background:
+                radial-gradient(ellipse 80% 60% at 15% 50%, rgba(208,44,45,0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 60% 60% at 85% 50%, rgba(208,44,45,0.04) 0%, transparent 65%),
+                #F4F4F4;
+        }
+        .section-light.bonus-section::before { opacity: 0.7; }
+
+        /* HIW connector line on white */
+        .section-light .hiw-steps::before {
+            background: linear-gradient(to right, var(--accent), #D0D0D0, var(--accent));
+        }
+        .section-light .hiw-risk-note {
+            background: rgba(0,0,0,0.03);
+            border-color: #D0D0D0;
+        }
+
+        /* Proof carousel arrows on white */
+        .section-light .proof-arrow {
+            background: rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.12);
+            color: rgba(10,10,10,0.55);
+        }
+        .section-light .proof-arrow:hover {
+            background: rgba(208,44,45,0.12);
+            border-color: rgba(208,44,45,0.3);
+            color: var(--accent);
+        }
+        .section-light .proof-dot { background: rgba(0,0,0,0.15); }
+        .section-light .proof-dot.active { background: var(--accent); }
+
+        /* btn-secondary on light sections */
+        .section-light .btn-secondary {
+            color: var(--text-primary);
+            border-color: var(--border-light);
+        }
+        .section-light .btn-secondary:hover {
+            border-color: rgba(10,10,10,0.28);
+            background: var(--bg-card);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        /* Platform tabs on light sections */
+        .section-light .ptab-btn:hover:not(.active) { color: var(--text-primary); }
+
+        /* Payment section on light bg */
+        .section-light.payment-section {
+            border-top: 1px solid #E0E0E0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .section-light .payment-method-card:hover {
+            box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+        }
     </style>
 </head>
 
@@ -2623,7 +2695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      §6 — BONUS HOOK SECTION
      Phase 3: Tier table (left) + interactive calculator (right)
 ============================================================ -->
-<section id="bonus" class="bonus-section reveal">
+<section id="bonus" class="bonus-section section-light reveal">
     <div class="lp-inner">
         <div class="bonus-section-header">
             <h2 class="lp-section-heading">Get Rewarded on Your <span class="em">First Live Deposit</span></h2>
@@ -2710,7 +2782,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<div class="lp-divider"></div>
 
 
 <!-- ============================================================
@@ -2751,14 +2822,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<div class="lp-divider"></div>
 
 
 <!-- ============================================================
      §9 — HOW IT WORKS (4 steps)
      Phase 4: Register · Verify · Fund · Trade With Guidance
 ============================================================ -->
-<section id="how-it-works" class="hiw-section">
+<section id="how-it-works" class="hiw-section section-light">
     <div class="lp-inner">
         <div class="reveal" style="text-align:center;">
             <h2 class="lp-section-heading" style="text-align:center;">Start Trading in <span class="em">4 Simple Steps</span></h2>
@@ -2792,7 +2862,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<div class="lp-divider"></div>
 
 
 <!-- ============================================================
@@ -2965,14 +3034,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<div class="lp-divider"></div>
 
 
 <!-- ============================================================
      §13 — SOCIAL PROOF (3 review cards)
      Phase 6: Static testimonial cards
 ============================================================ -->
-<section id="proof" class="proof-section">
+<section id="proof" class="proof-section section-light">
     <div class="lp-inner">
         <div class="reveal" style="text-align:center;">
             <h2 class="lp-section-heading" style="text-align:center;">What Our Traders <span class="em">Are Saying</span></h2>
@@ -3058,7 +3126,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
-<div class="lp-divider"></div>
 
 
 <!-- ============================================================
@@ -3190,7 +3257,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      §17 — PAYMENT SECTION
      Phase 7: Card logos + payment methods
 ============================================================ -->
-<section id="payment" class="payment-section">
+<section id="payment" class="payment-section section-light">
     <div class="payment-inner">
         <h3 class="payment-heading">Secure, Instant Deposits &amp; Withdrawals</h3>
         <p class="payment-sub">Fund your account and withdraw your profits with ease — using your preferred payment method. All transactions are secured and processed swiftly.</p>
@@ -3221,13 +3288,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="payment-method-card">
                 <div class="payment-method-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" style="height:28px;width:auto;filter:brightness(0) invert(1);">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" style="height:28px;width:auto;filter:brightness(0);">
                 </div>
                 <span class="payment-method-name">Apple Pay</span>
             </div>
             <div class="payment-method-card">
                 <div class="payment-method-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/2560px-Google_Pay_Logo.svg.png" alt="Google Pay" style="height:24px;width:auto;" onerror="this.onerror=null;this.src='./assets/images/google-pay.svg';">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 24" height="30" style="display:block" role="img" aria-label="Google Pay">
+                        <path d="M20.64 12.2c0-.63-.06-1.25-.16-1.84H12v3.49h4.84a4.14 4.14 0 01-1.8 2.71v2.25h2.92c1.71-1.57 2.68-3.88 2.68-6.61z" fill="#4285F4"/>
+                        <path d="M12 21c2.43 0 4.47-.8 5.96-2.18l-2.92-2.25c-.8.55-1.84.87-3.04.87-2.34 0-4.32-1.58-5.03-3.7H3.95v2.32A9 9 0 0012 21z" fill="#34A853"/>
+                        <path d="M6.97 13.74A5.4 5.4 0 016.7 12c0-.6.1-1.19.27-1.74V7.94H3.95A9 9 0 003 12c0 1.45.35 2.83.95 4.06l3.02-2.32z" fill="#FBBC05"/>
+                        <path d="M12 6.58c1.32 0 2.5.45 3.44 1.35L18.12 5.2A9 9 0 0012 3c-3.55 0-6.62 2-8.05 4.94l3.02 2.32C7.68 8.16 9.66 6.58 12 6.58z" fill="#EA4335"/>
+                        <text x="28" y="16.5" font-family="Roboto,Arial,sans-serif" font-size="13" font-weight="500" fill="#5F6368">Pay</text>
+                    </svg>
                 </div>
                 <span class="payment-method-name">Google Pay</span>
             </div>

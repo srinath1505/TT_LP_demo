@@ -42,12 +42,12 @@
         /* NAV */
         .ty-nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-            height: 68px; padding: 0 48px;
+            height: 68px; padding: 0 0.5cm;
             display: flex; align-items: center; justify-content: space-between;
             background: rgba(8,8,8,0.92); backdrop-filter: blur(24px);
             border-bottom: 1px solid var(--border-light);
         }
-        .ty-nav-logo { display: flex; align-items: center; text-decoration: none; }
+        .ty-nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
         .ty-nav-logo-img { height: 36px; width: auto; object-fit: contain; }
         .ty-nav-back {
             font-size: 13px;
@@ -60,7 +60,7 @@
             transition: color 0.2s;
         }
         .ty-nav-back:hover { color: var(--text-primary); }
-        @media (max-width: 520px) { .ty-nav { padding: 0 20px; } }
+        @media (max-width: 520px) { .ty-nav { padding: 0 0.5cm; } }
 
         /* MAIN */
         .ty-main {
