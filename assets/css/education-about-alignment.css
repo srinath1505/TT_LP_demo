@@ -1,0 +1,787 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Education Hub + subpages — align with About Us (about-styles.css)
+   Typography, section rhythm, spacing, and hero affordances.
+   Loaded after education-hub.css and about-styles.css
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Map About CSS variable names so .section-title / .section-subtitle work inside .education-hub */
+.education-hub {
+  --about-heading-color: var(--edu-heading-color, #d02c2d);
+  --about-subheading-color: var(--edu-subheading-color, #ffffff);
+  --about-body-color: var(--edu-body-color, var(--text-secondary));
+}
+
+body.light-theme .education-hub {
+  --about-heading-color: var(--edu-heading-color, #d02c2d);
+  --about-subheading-color: var(--edu-subheading-color, #1f1712);
+  --about-body-color: var(--edu-body-color, rgba(31, 23, 18, 0.78));
+}
+
+/* Hero: match About grid overlay on top of video */
+.education-hub-hero {
+  position: relative;
+}
+
+/* Tighten hero vs first section: drop fixed viewport min-heights so the band below copy isn’t empty filler. */
+.education-hub-hero.page-hero1 {
+  height: auto;
+  min-height: unset;
+  /* Extra top padding clears the fixed header without a large empty band below the copy */
+  padding: clamp(88px, 11vh, 132px) 0 clamp(56px, 9vh, 96px);
+  box-sizing: border-box;
+}
+
+.education-hub-hero .education-hub-hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  opacity: 0.85;
+}
+
+.education-hub-hero .page-hero-overlay1 {
+  z-index: 2;
+}
+
+.education-hub-hero .page-hero-content1 {
+  z-index: 4;
+}
+
+/* Eyebrow: match .about-hero-eyebrow (dot + label) */
+.education-hub .hub-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Hero lead text: match .about-hero-lead scale */
+.education-hub .page-hero-subtitle1 {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+/* Primary hero headline: keep in sync with .about-hero-title weight/size intent */
+.education-hub .page-hero-title1 {
+  letter-spacing: normal;
+}
+
+/* CTA: match .cta-btn-secondary / primary from About */
+.education-hub .hero-ctas .btn-secondary1 {
+  padding: 15px 36px;
+  border-radius: var(--btn-pill-radius, 9999px);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+
+.education-hub .hero-ctas .btn-secondary1:hover {
+  transform: translateY(-2px);
+}
+
+/* Section rhythm: match .about-origin / .about-pillars (110px) */
+.education-hub .hub-section,
+.education-hub .learn-section,
+.education-hub .who-for-sec,
+.education-hub .how-it-works-sec,
+.education-hub .faq-sec {
+  padding: 110px 0;
+}
+
+/* Intro block: first content section uses same surface as .about-origin */
+.education-hub .hub-intro-section {
+  background: var(--bg-secondary);
+}
+
+/* Section headers: match .section-header spacing */
+.education-hub .section-header {
+  margin-bottom: 60px;
+}
+
+.education-hub .section-subtitle {
+  max-width: 560px;
+}
+
+/* Body copy in overview: match .section-body */
+.education-hub .hub-intro-panel .section-body {
+  text-align: center;
+  text-justify: inter-word;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cards: match .pillar-title / .pillar-body scale */
+.education-hub .learn-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.education-hub .learn-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.education-hub .learn-card {
+  border-radius: 20px;
+  padding: 36px 32px;
+}
+
+/* Who / steps / FAQ: card titles closer to About card scale */
+.education-hub .who-box h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--text-primary);
+}
+
+.education-hub .who-box ul li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.education-hub .step h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.education-hub .step p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.education-hub .step-num {
+  width: 44px;
+  height: 44px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+/* FAQ: align with About card typography */
+.education-hub .faq-q {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 20px 24px;
+}
+
+.education-hub .faq-a {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  padding: 0 24px 22px;
+}
+
+/* Scroll hint: same as About hero */
+.education-hub-hero .about-hero-scroll-hint {
+  z-index: 4;
+}
+
+/* FAQ band: keep primary surface (replaces inline style) */
+.education-hub .education-hub-faq.faq-sec {
+  background: var(--bg-primary);
+}
+
+body.light-theme .education-hub .education-hub-faq.faq-sec {
+  background: linear-gradient(180deg, #f8f4ef 0%, #fffdf9 100%);
+}
+
+@media (max-width: 768px) {
+  .education-hub .section-subtitle {
+    font-size: 1.05rem;
+  }
+
+  /* Match about-styles.css mobile hero eyebrow treatment */
+  .education-hub .hub-hero-eyebrow {
+    font-size: 0.7rem;
+    display: none;
+  }
+
+  .education-hub .hub-section,
+  .education-hub .learn-section,
+  .education-hub .who-for-sec,
+  .education-hub .how-it-works-sec,
+  .education-hub .faq-sec {
+    padding: 84px 0;
+  }
+}
+
+/* Primary CTAs on education subpage heroes: match .cta-btn-primary */
+.education-subpage-hero-inner .btn-primary {
+  padding: 15px 36px;
+  border-radius: var(--btn-pill-radius, 9999px);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+}
+
+.education-subpage-hero-inner .btn-primary:hover {
+  box-shadow: 0 8px 28px var(--brand-shadow);
+  transform: translateY(-2px);
+}
+
+/* ── Education subpages: match About section header rhythm ─────────── */
+.education-subpage .education-subpage-header {
+  margin-bottom: 60px;
+}
+
+.education-subpage .education-subpage-section-subtitle {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.education-subpage .education-subpage-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+/* Education lead gate modal (shared with deposit-modal) */
+.edu-lead-gate-note {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.edu-lead-gate-check-label {
+  gap: 10px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.edu-lead-gate-check-label input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.edu-lead-gate-consent {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+
+.edu-lead-gate-mode-switch {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.light-theme .edu-lead-gate-mode-switch {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.edu-lead-gate-mode-btn {
+  flex: 1;
+  margin: 0;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--text-secondary);
+  background: transparent;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.edu-lead-gate-mode-btn[aria-selected='true'] {
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  box-shadow: 0 4px 14px rgba(230, 57, 70, 0.35);
+}
+
+body.light-theme .edu-lead-gate-mode-btn[aria-selected='true'] {
+  color: #fff;
+}
+
+.edu-lead-gate-mode-btn[aria-selected='false']:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body.light-theme .edu-lead-gate-mode-btn[aria-selected='false']:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.edu-lead-gate-panel--hidden {
+  display: none !important;
+}
+
+.education-hub .hero-ctas button.btn-secondary1,
+.education-hub .hero-ctas button.education-hub-access-content-btn {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.education-hub .hero-ctas button.education-hub-access-content-btn.education-hub-access-content-btn--guided {
+  color: #fff;
+  background: rgba(230, 57, 70, 0.22);
+}
+
+body.light-theme .education-hub .hero-ctas button.education-hub-access-content-btn.education-hub-access-content-btn--guided {
+  color: #1f1712;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+/* Academy lead modal: full-viewport backdrop on small screens / mobile browsers */
+#eduLeadGateModal.deposit-modal,
+#demoAccountModal.deposit-modal,
+#liveAccountModal.deposit-modal {
+  align-items: center;
+  justify-content: center;
+  padding: max(12px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-right, 0px))
+    max(12px, env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px));
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#eduLeadGateModal .deposit-modal-overlay,
+#eduLeadGateModal .edu-lead-gate-overlay,
+#demoAccountModal .deposit-modal-overlay,
+#demoAccountModal .demo-account-modal-overlay,
+#liveAccountModal .deposit-modal-overlay,
+#liveAccountModal .live-account-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  z-index: 0;
+}
+
+#eduLeadGateModal .deposit-modal-content,
+#demoAccountModal .deposit-modal-content,
+#liveAccountModal .deposit-modal-content {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  max-height: min(92dvh, calc(100dvh - 24px));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#eduLeadGateModal .edu-lead-gate-submit,
+#demoAccountModal .demo-account-submit,
+#liveAccountModal .live-account-submit {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px 24px;
+  min-height: 52px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: var(--btn-pill-radius, 9999px);
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  box-shadow: 0 10px 28px rgba(230, 57, 70, 0.45);
+}
+
+#eduLeadGateModal .edu-lead-gate-submit:hover:not(:disabled),
+#demoAccountModal .demo-account-submit:hover:not(:disabled),
+#liveAccountModal .live-account-submit:hover:not(:disabled) {
+  filter: brightness(1.06);
+  box-shadow: 0 12px 32px rgba(230, 57, 70, 0.5);
+}
+
+#eduLeadGateModal .edu-lead-gate-submit:disabled,
+#demoAccountModal .demo-account-submit:disabled,
+#liveAccountModal .live-account-submit:disabled {
+  opacity: 0.9;
+  cursor: wait;
+  filter: grayscale(0.1);
+}
+
+body.light-theme #eduLeadGateModal .edu-lead-gate-submit,
+body.light-theme #demoAccountModal .demo-account-submit,
+body.light-theme #liveAccountModal .live-account-submit {
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(230, 57, 70, 0.4);
+}
+
+#demoAccountModal .demo-account-done-btn,
+#liveAccountModal .live-account-done-btn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px 24px;
+  min-height: 52px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--btn-pill-radius, 9999px);
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  box-shadow: 0 10px 28px rgba(230, 57, 70, 0.45);
+}
+
+#demoAccountModal select,
+#liveAccountModal select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.demo-account-modal-note {
+  margin-top: 4px;
+}
+
+.edu-lead-gate-check-label a {
+  color: var(--brand-color-start, #d02c2d);
+  text-decoration: underline;
+}
+
+.edu-lead-gate-error {
+  font-size: 0.88rem;
+  color: #f87171;
+  margin: 8px 0 0;
+}
+
+body.light-theme .edu-lead-gate-error {
+  color: #d02c2d;
+}
+
+/* Education subpage hero: hub + account CTAs */
+.education-subpage-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 14px;
+  margin-top: 28px;
+}
+
+.education-subpage-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: var(--btn-pill-radius, 9999px);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+}
+
+.education-subpage-hero-cta--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.education-subpage-hero-cta--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.education-subpage-hero-cta--primary {
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.35);
+}
+
+.education-subpage-hero-cta--primary:hover {
+  transform: translateY(-2px);
+}
+
+.education-subpage-hero-cta--solid {
+  color: #1f1712;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.education-subpage-hero-cta--solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .education-subpage-hero-cta--ghost {
+  border-color: rgba(31, 23, 18, 0.2);
+  color: var(--text-primary);
+  background: rgba(248, 244, 239, 0.85);
+}
+
+body.light-theme .education-subpage-hero-cta--solid {
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  border: none;
+}
+
+.education-hub-main-hero-ctas {
+  flex-wrap: wrap;
+}
+
+.education-hub-hero-live-cta {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #fff !important;
+}
+
+.education-hub-hero-live-cta:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Full-page registration */
+.registration-account-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+.education-subpage-content--register-page {
+  padding-top: clamp(110px, 16vw, 150px);
+}
+
+.registration-page-hero-title {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 12px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.registration-page-hero-lead {
+  font-size: clamp(1rem, 1.85vw, 1.12rem);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 28px;
+  max-width: 42rem;
+}
+
+.registration-account-crosslink-wrap {
+  margin: 4px 0 20px;
+}
+
+.registration-account-crosslink {
+  color: #d02c2d;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(230, 57, 70, 0.5);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.registration-account-crosslink:hover {
+  color: #ff8f66;
+  border-bottom-color: rgba(255, 143, 102, 0.95);
+}
+
+body.light-theme .registration-account-crosslink {
+  color: #d02c2d;
+  border-bottom-color: rgba(230, 57, 70, 0.45);
+}
+
+body.light-theme .registration-account-crosslink:hover {
+  color: #c81e2c;
+  border-bottom-color: rgba(200, 30, 44, 0.65);
+}
+
+@media (max-width: 900px) {
+  .registration-account-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.registration-account-intro .section-body {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.registration-account-bullets {
+  margin: 0 0 20px;
+  padding-left: 1.2em;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Claim offer — richer left column beside the form on desktop */
+.education-subpage--claim-offer .claim-offer-intro-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 8px;
+}
+
+.education-subpage--claim-offer .claim-offer-intro-section .registration-page-hero-title {
+  margin-bottom: 10px;
+}
+
+.education-subpage--claim-offer .claim-offer-intro-section .section-body {
+  margin-bottom: 12px;
+}
+
+.education-subpage--claim-offer .claim-offer-intro-section .registration-account-bullets {
+  margin-bottom: 0;
+}
+
+.education-subpage--claim-offer .registration-account-intro .edu-lead-gate-note {
+  margin: 0 0 16px;
+  max-width: 42rem;
+}
+
+.registration-account-card {
+  padding: 28px 26px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+}
+
+.registration-account-card-title {
+  margin: 0 0 18px;
+  font-size: 1.25rem;
+}
+
+.registration-account-form .form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--field-border, var(--border-color));
+  background: var(--field-bg, var(--bg-primary));
+  color: var(--field-text, var(--text-primary));
+  font-size: 1rem;
+}
+
+.registration-account-submit {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px 24px !important;
+  font-size: 1rem !important;
+}
+
+.registration-account-submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.education-thank-you-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.education-thank-you-topic {
+  margin-top: 8px;
+  font-size: 1rem !important;
+}
+
+.webinars-form .btn-primary {
+  width: 100%;
+  margin-top: 4px;
+  padding: 15px 18px;
+  justify-content: center;
+}
+
+/* Learn-route heroes (Trading Essentials, Video Education, Live Training, Market Research) */
+.page-hero-content .education-subpage-hero-ctas,
+.page-hero1 .page-hero-content .education-subpage-hero-ctas {
+  margin-top: 22px;
+  margin-bottom: 6px;
+}
+
+.training-left .education-subpage-hero-ctas {
+  justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+  .training-left .education-subpage-hero-ctas {
+    justify-content: center;
+  }
+}
+
+/* eBook download modal — primary submit always visible, on-brand */
+#ebookLeadModal .deposit-form button.btn-primary,
+#ebookLeadModal .deposit-form button[type='submit'] {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  min-height: 52px;
+  padding: 16px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--btn-pill-radius, 9999px);
+  cursor: pointer;
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.35);
+  border: none;
+}
+
+/* Webinar registration — reinforce primary CTA (matches Academy forms) */
+.webinars-form button[type='submit'].btn-primary {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 6px;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: var(--btn-pill-radius, 9999px);
+  color: #fff;
+  background: var(--brand-gradient, linear-gradient(135deg, #d02c2d 0%, #d02c2d 100%));
+  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.35);
+  border: none;
+  cursor: pointer;
+}
+
+body.light-theme .webinars-form button[type='submit'].btn-primary,
+body.light-theme #ebookLeadModal .deposit-form button[type='submit'] {
+  color: #fff;
+}
