@@ -101,6 +101,60 @@
         .mktg-mobile-btn { display: flex; }
     }
     </style>
+
+    <!-- Background design -->
+    <style>
+    .education-subpage.education-subpage--register {
+        position: relative;
+        overflow: hidden;
+    }
+    .section-bg-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    .section-bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 28px 28px;
+    }
+    .section-bg-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+    }
+    .demo-orb-a {
+        width: 700px; height: 700px;
+        top: -240px; right: -200px;
+        background: radial-gradient(circle, rgba(37,99,235,0.26) 0%, transparent 65%);
+    }
+    .demo-orb-b {
+        width: 440px; height: 440px;
+        bottom: -100px; left: -100px;
+        background: radial-gradient(circle, rgba(109,40,217,0.20) 0%, transparent 65%);
+    }
+    .demo-orb-c {
+        width: 340px; height: 340px;
+        top: 38%; left: 32%;
+        background: radial-gradient(circle, rgba(208,44,45,0.09) 0%, transparent 65%);
+    }
+    .section-bg-chart {
+        position: absolute;
+        right: -10px;
+        bottom: 0;
+        width: 58%;
+        max-width: 580px;
+        min-width: 280px;
+        opacity: 0.09;
+    }
+    .education-subpage-content.education-subpage-content--register-page {
+        position: relative;
+        z-index: 1;
+    }
+    </style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFLLNNTD"
@@ -121,6 +175,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <section class="education-subpage education-subpage--register">
+
+    <!-- Background layer: dot grid + cool orbs + line chart -->
+    <div class="section-bg-layer" aria-hidden="true">
+        <div class="section-bg-grid"></div>
+        <div class="section-bg-orb demo-orb-a"></div>
+        <div class="section-bg-orb demo-orb-b"></div>
+        <div class="section-bg-orb demo-orb-c"></div>
+        <svg class="section-bg-chart" viewBox="0 0 580 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="demoAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.8"/>
+                    <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+            <!-- Reference lines -->
+            <line x1="0" y1="310" x2="580" y2="310" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+            <line x1="0" y1="240" x2="580" y2="240" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="6 6"/>
+            <line x1="0" y1="170" x2="580" y2="170" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="6 6"/>
+            <!-- Area fill under main line -->
+            <path d="M0,272 C40,258 70,282 112,256 C148,234 168,270 214,242 C252,218 272,250 324,207 C364,174 388,218 438,182 C472,157 512,188 580,152 L580,315 L0,315 Z"
+                  fill="url(#demoAreaGrad)"/>
+            <!-- Main price line -->
+            <path d="M0,272 C40,258 70,282 112,256 C148,234 168,270 214,242 C252,218 272,250 324,207 C364,174 388,218 438,182 C472,157 512,188 580,152"
+                  stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Moving average dashed line -->
+            <path d="M0,274 C80,260 162,244 252,224 C332,207 402,192 482,172 C522,162 552,156 580,150"
+                  stroke="rgba(147,197,253,0.55)" stroke-width="1.5" stroke-dasharray="8 5" fill="none"/>
+            <!-- Key data point markers -->
+            <circle cx="112" cy="256" r="4.5" fill="#3b82f6"/>
+            <circle cx="214" cy="242" r="4.5" fill="#3b82f6"/>
+            <circle cx="324" cy="207" r="4.5" fill="#3b82f6"/>
+            <circle cx="438" cy="182" r="4.5" fill="#3b82f6"/>
+            <circle cx="580" cy="152" r="5.5" fill="#60a5fa"/>
+        </svg>
+    </div>
+
     <section class="education-subpage-content education-subpage-content--register-page">
         <div class="container">
             <div class="registration-account-layout">

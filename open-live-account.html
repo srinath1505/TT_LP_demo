@@ -202,6 +202,55 @@
     .ola-qual-fields { display: flex; flex-direction: column; gap: 12px; }
     @media (max-width: 480px) { .ola-form-grid-2 { grid-template-columns: 1fr; } }
     </style>
+
+    <!-- Background design -->
+    <style>
+    .education-subpage.education-subpage--register {
+        position: relative;
+        overflow: hidden;
+    }
+    .section-bg-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    .section-bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 28px 28px;
+    }
+    .section-bg-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+    }
+    .live-orb-a {
+        width: 700px; height: 700px;
+        top: -240px; right: -200px;
+        background: radial-gradient(circle, rgba(208,44,45,0.30) 0%, transparent 65%);
+    }
+    .live-orb-b {
+        width: 440px; height: 440px;
+        bottom: -100px; left: -100px;
+        background: radial-gradient(circle, rgba(180,70,0,0.20) 0%, transparent 65%);
+    }
+    .section-bg-chart {
+        position: absolute;
+        right: -10px;
+        bottom: 0;
+        width: 58%;
+        max-width: 580px;
+        min-width: 280px;
+        opacity: 0.08;
+    }
+    .education-subpage-content.education-subpage-content--register-page {
+        position: relative;
+        z-index: 1;
+    }
+    </style>
 </head>
 <body>
 <!-- GTM noscript -->
@@ -223,6 +272,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <section class="education-subpage education-subpage--register">
+
+    <!-- Background layer: dot grid + warm orbs + candlestick chart -->
+    <div class="section-bg-layer" aria-hidden="true">
+        <div class="section-bg-grid"></div>
+        <div class="section-bg-orb live-orb-a"></div>
+        <div class="section-bg-orb live-orb-b"></div>
+        <svg class="section-bg-chart" viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Reference lines -->
+            <line x1="0" y1="310" x2="560" y2="310" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+            <line x1="0" y1="240" x2="560" y2="240" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="6 6"/>
+            <line x1="0" y1="170" x2="560" y2="170" stroke="rgba(255,255,255,0.2)" stroke-width="0.5" stroke-dasharray="6 6"/>
+            <!-- Upward trendline -->
+            <line x1="10" y1="298" x2="534" y2="142" stroke="rgba(208,44,45,0.45)" stroke-width="1" stroke-dasharray="5 5"/>
+            <!-- Candlesticks (white=bullish, red=bearish) -->
+            <!-- c1 bearish -->
+            <line x1="20" y1="278" x2="20" y2="300" stroke="#D02C2D" stroke-width="1.5"/>
+            <rect x="9" y="281" width="22" height="15" fill="#D02C2D"/>
+            <!-- c2 bullish -->
+            <line x1="62" y1="264" x2="62" y2="292" stroke="#fff" stroke-width="1.5"/>
+            <rect x="51" y="267" width="22" height="21" fill="#fff"/>
+            <!-- c3 bullish -->
+            <line x1="104" y1="250" x2="104" y2="278" stroke="#fff" stroke-width="1.5"/>
+            <rect x="93" y="253" width="22" height="21" fill="#fff"/>
+            <!-- c4 bearish pullback -->
+            <line x1="146" y1="255" x2="146" y2="280" stroke="#D02C2D" stroke-width="1.5"/>
+            <rect x="135" y="258" width="22" height="18" fill="#D02C2D"/>
+            <!-- c5 bullish -->
+            <line x1="188" y1="238" x2="188" y2="266" stroke="#fff" stroke-width="1.5"/>
+            <rect x="177" y="241" width="22" height="21" fill="#fff"/>
+            <!-- c6 bullish -->
+            <line x1="230" y1="222" x2="230" y2="252" stroke="#fff" stroke-width="1.5"/>
+            <rect x="219" y="225" width="22" height="23" fill="#fff"/>
+            <!-- c7 bullish -->
+            <line x1="272" y1="210" x2="272" y2="238" stroke="#fff" stroke-width="1.5"/>
+            <rect x="261" y="213" width="22" height="21" fill="#fff"/>
+            <!-- c8 bullish -->
+            <line x1="314" y1="200" x2="314" y2="228" stroke="#fff" stroke-width="1.5"/>
+            <rect x="303" y="204" width="22" height="20" fill="#fff"/>
+            <!-- c9 bearish pullback -->
+            <line x1="356" y1="205" x2="356" y2="230" stroke="#D02C2D" stroke-width="1.5"/>
+            <rect x="345" y="208" width="22" height="18" fill="#D02C2D"/>
+            <!-- c10 bullish strong -->
+            <line x1="398" y1="188" x2="398" y2="218" stroke="#fff" stroke-width="1.5"/>
+            <rect x="387" y="192" width="22" height="22" fill="#fff"/>
+            <!-- c11 bullish -->
+            <line x1="440" y1="170" x2="440" y2="200" stroke="#fff" stroke-width="1.5"/>
+            <rect x="429" y="174" width="22" height="22" fill="#fff"/>
+            <!-- c12 bullish -->
+            <line x1="482" y1="155" x2="482" y2="185" stroke="#fff" stroke-width="1.5"/>
+            <rect x="471" y="158" width="22" height="22" fill="#fff"/>
+            <!-- c13 bullish -->
+            <line x1="524" y1="138" x2="524" y2="168" stroke="#fff" stroke-width="1.5"/>
+            <rect x="513" y="142" width="22" height="22" fill="#fff"/>
+        </svg>
+    </div>
+
     <section class="education-subpage-content education-subpage-content--register-page">
         <div class="container">
             <div class="registration-account-layout">
