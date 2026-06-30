@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -102,16 +102,16 @@
     .footer-support-note { font-size: 13px; color: rgba(242,242,242,0.55); }
     .footer-payments { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
     .footer-payments img { height: 22px; width: auto; object-fit: contain; opacity: 0.9; display: block; }
-    .footer-subbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); }
-    .footer-subbar-copy { font-size: 12px; color: rgba(242,242,242,0.6); }
-    .footer-partners { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
-    .footer-partner { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); padding: 6px 14px; border: 1px solid var(--border); border-radius: 4px; }
+    .footer-subbar-inner { max-width: 1200px; margin: 28px auto 0; padding: 22px 48px 0; border-top: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .footer-subbar-copy { font-size: 13px; color: rgba(242,242,242,0.55); }
+    .footer-partners { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .footer-partner { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--text-muted); padding: 7px 16px; border: 1px solid var(--border); border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; }
     .footer-regulatory { font-size: 11px; line-height: 1.8; color: var(--text-muted); max-width: 1200px; margin: 40px auto 0; padding: 0 48px; }
     .footer-regulatory p { margin-bottom: 12px; }
     .footer-regulatory .risk-warning { color: var(--accent); font-weight: 600; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
     @media (max-width: 1024px) { .site-footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; } }
-    @media (max-width: 640px) { .site-footer-inner { grid-template-columns: 1fr; padding: 0 18px; gap: 28px; } .footer-regulatory { padding: 0 18px; } }
+    @media (max-width: 640px) { .site-footer-inner { grid-template-columns: 1fr; padding: 0 20px; gap: 28px; } .footer-subbar-inner { padding: 16px 20px 0; flex-direction: column; text-align: center; } .footer-regulatory { padding: 0 20px; } }
 
     /* Nav */
     .mktg-nav {
@@ -467,7 +467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <input type="checkbox" name="consent" id="openLiveConsent" value="1" required>
                                 </label>
                                 <span>I understand that trading carries risk and I agree to be contacted about this offer.
-                                    I have read the <a href="../privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
+                                    I have read the <a href="./privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
                             </div>
                             <p class="edu-lead-gate-error" id="openLivePageError" role="alert" hidden></p>
                             <div class="ola-step-buttons">
@@ -486,7 +486,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </section>
 
-<footer class="site-footer">
+<footer id="lp-footer" class="site-footer">
     <div class="site-footer-inner">
         <div>
             <div class="footer-title">Download Our App</div>
@@ -513,19 +513,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div>
             <div class="footer-title">Legal</div>
             <div class="footer-links">
-                <a class="footer-link" href="../privacy.html">Privacy Policy</a>
+                <a class="footer-link" href="./privacy.html">Privacy Policy</a>
+                <a class="footer-link" href="./regulations.html">Regulations</a>
             </div>
         </div>
     </div>
+
     <div class="footer-regulatory">
         <p>© 2026 Amber Rock Trade Ltd. Level 5, Alexander House, 35 Cybercity, 72201 Ebene, Mauritius. Company No: 222594. <a href="#" style="color:var(--accent);text-decoration:none;">License No: GB24203892</a>. Amber Rock Trade Ltd is authorized and regulated by the Financial Services Commission of Mauritius (FSC).</p>
         <p>This website is operated by Amber Rock Trade Ltd. Payment processing services are provided by the Company's authorized payment agent, B-Tech Ltd, registered at Louki Akrita 1, Akritas Court, 3rd Floor, Flat/Office 301, 3030 Limassol, Cyprus (Company No: HE 414065).</p>
         <p><span class="risk-warning">Risk Warning:</span> Trading in derivative financial instruments, including CFDs and other leveraged products, carries a high level of risk and may not be suitable for all investors. You may lose all or more than your initial investment. Trading is subject to market volatility, leverage risk, and other risks. You should only trade with funds you can afford to lose. Before engaging in trading activities, please ensure that you fully understand the risks involved. If necessary, seek independent professional advice.</p>
     </div>
+
     <div class="footer-subbar-inner">
         <p class="footer-subbar-copy">© 2026 TraderTok / Amber Rock Trade Ltd. All rights reserved.</p>
         <div class="footer-partners">
-            <div class="footer-partner"><img src="../assets/images/mt5.png" alt="MetaTrader 5" style="height:14px;width:auto;object-fit:contain;vertical-align:middle;"></div>
+            <div class="footer-partner"><img src="../assets/images/mt5.png" alt="MetaTrader 5" style="height:22px;width:auto;object-fit:contain;vertical-align:middle;"></div>
             <div class="footer-partner">Web Trader</div>
         </div>
     </div>
@@ -607,8 +610,7 @@ window.i18n = {
             showStep(1);
         });
     });
-})();
-</script>
+
 <script src="../assets/js/leads-utils.js" defer></script>
 <script src="../assets/js/country-iso-data.js" defer></script>
 <script src="../assets/js/country-search-select.js" defer></script>
