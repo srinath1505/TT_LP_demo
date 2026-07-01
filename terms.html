@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -401,6 +401,15 @@
                 padding: 0 16px;
             }
         }
+
+        /* ── LP-FOOTER OVERRIDES ── */
+        #lp-footer.site-footer-inner,
+        #lp-footer .site-footer-inner { grid-template-columns: 1.5fr 1fr; }
+        .footer-regulatory { font-size: 11px; line-height: 1.8; color: var(--text-muted); max-width: 1200px; margin: 40px auto 0; padding: 0 48px; }
+        .footer-regulatory p { margin-bottom: 12px; }
+        .footer-regulatory .risk-warning { color: var(--accent); font-weight: 600; }
+        .footer-partners { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .footer-partner { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--text-muted); padding: 7px 16px; border: 1px solid var(--border); border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; }
     </style>
 </head>
 
@@ -428,74 +437,53 @@
                     href="mailto:support@tradertok.com">support@tradertok.com</a></div>
         </div>
     </main>
-        <footer class="site-footer">
-        <div class="site-footer-inner">
-            <div>
-                <div class="footer-title">DOWNLOAD OUR APP FROM THE STORES</div>
-                <div class="footer-store-buttons">
-                    <a class="footer-store-btn" href="https://apps.apple.com/tr/app/tradertok/id6759670314"
-                        target="_blank" rel="noopener noreferrer"><img style="max-width: 18px;"
-                            src="https://tradertok.com/assets/images/Apple_logo_black.png" alt="Apple"
-                            class="store-icon"><span>App Store</span></a>
-                    <a class="footer-store-btn" href="https://play.google.com/store/apps/details?id=com.tradertok.app"
-                        target="_blank" rel="noopener noreferrer"><svg class="store-icon" viewBox="0 0 512 512"
-                            xmlns="http://www.w3.org/2000/svg" style="max-width: 18px;">
-                            <path
-                                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 32C34 47.3 27 71.5 27 104.6v302.8c0 33 7 57.3 20 72.7L250.9 256 47 32zm333.3 224L104.6 499l220.7-127.3 60.1-60.1L380.3 256zM343.5 216.1l60.1 60.1 60.2-34.6c21.8-12.6 33.7-31.3 33.7-53.6s-11.8-41-33.7-53.6l-60.2-34.6-60.1 66.3z"
-                                fill="currentColor" />
-                        </svg><span>Google Play</span></a>
-                </div>
-                <div class="footer-contact">
-                    <a class="footer-phone" href="tel:+447520640890">+44 7520 640 890</a>
-                    <a class="footer-email" href="mailto:support@tradertok.com">support@tradertok.com</a>
-                    <div class="footer-support-note">Available 24/5 for support</div>
-                </div>
-                <div class="footer-payments" aria-label="Payments">
-                    <img style="max-width: 25px;"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg/3840px-Visa_Inc._logo_%282021%E2%80%93present%29.svg.png"
-                        alt="Visa">
-                    <img style="max-width: 25px;"
-                        src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
-                </div>
+<footer id="lp-footer" class="site-footer">
+    <div class="site-footer-inner">
+        <div>
+            <div class="footer-title">Download Our App</div>
+            <div class="footer-store-buttons">
+                <a class="footer-store-btn" href="https://apps.apple.com/tr/app/tradertok/id6759670314" target="_blank" rel="noopener noreferrer">
+                    <img style="max-width:18px;" src="./assets/images/Apple_logo_black.png" alt="Apple" class="store-icon">
+                    <span>App Store</span>
+                </a>
+                <a class="footer-store-btn" href="https://play.google.com/store/apps/details?id=com.tradertok.app" target="_blank" rel="noopener noreferrer">
+                    <svg class="store-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;"><defs><linearGradient id="gp-a" x1="61.634" x2="233.38" y1="474.99" y2="255.12" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00a0ff"/><stop offset=".26" stop-color="#00beff"/><stop offset=".512" stop-color="#00d2ff"/><stop offset="1" stop-color="#00e3ff"/></linearGradient><linearGradient id="gp-b" x1="271.85" x2="131.4" y1="256" y2="256" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffe000"/><stop offset=".409" stop-color="#ffbd00"/><stop offset=".775" stop-color="orange"/><stop offset="1" stop-color="#ff9c00"/></linearGradient><linearGradient id="gp-c" x1="162.07" x2="314.18" y1="282.1" y2="440.97" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff3a44"/><stop offset="1" stop-color="#c31162"/></linearGradient><linearGradient id="gp-d" x1="113.67" x2="188.5" y1="70.44" y2="158.24" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#32a071"/><stop offset=".476" stop-color="#15cf74"/><stop offset="1" stop-color="#00f076"/></linearGradient></defs><path d="M64.37 18.51c-6.18 6.59-9.84 16.66-9.84 29.78v415.42c0 13.13 3.66 23.2 9.84 29.78l1.56 1.52 232.6-232.6v-5.48L65.93 24.99z" fill="url(#gp-a)"/><path d="M375.07 339.82l-77.54-77.56v-12.51l77.54-77.54 1.75 1 91.93 52.23c26.26 14.92 26.26 39.34 0 54.26l-91.93 52.23z" fill="url(#gp-b)"/><path d="M376.82 338.82L297.53 256 64.37 493.29c8.65 9.16 22.95 10.29 38.98 1.15z" fill="url(#gp-c)"/><path d="M376.82 173.18L103.35 17.56C87.32 8.42 73.02 9.55 64.37 18.71L297.53 256z" fill="url(#gp-d)"/></svg>
+                    <span>Google Play</span>
+                </a>
             </div>
-            <div>
-                <div class="footer-title">ABOUT US</div>
-                <div class="footer-links">
-                    <a class="footer-link" href="#">About TraderTok</a>
-                    <a class="footer-link" href="#">Accessibility</a>
-                </div>
+            <div class="footer-contact">
+                <a class="footer-phone" href="tel:+447520640890">+44 7520 640 890</a>
+                <a class="footer-email" href="mailto:support@tradertok.com">support@tradertok.com</a>
+                <div class="footer-support-note">Available 24/5 for support</div>
             </div>
-            <div>
-                <div class="footer-title">PRIVACY AND REGULATION</div>
-                <div class="footer-links">
-                    <a class="footer-link" href="https://www.tradertok.com/cookies-policy">Cookies Policy</a>
-                    <a class="footer-link" href="/privacy.html">Privacy Policy</a>
-                    <a class="footer-link" href="/regulations.html">Regulations</a>
-                    <a class="footer-link" href="https://www.tradertok.com/general-risk-disclosure">General Risk Disclosure</a>
-                    <a class="footer-link" href="/terms.html">Terms &amp; Conditions</a>
-                    <a class="footer-link" href="https://www.tradertok.com/client-service-agreement">Client Service Agreement</a>
-                    <a class="footer-link" href="https://www.tradertok.com/risk-disclosure">Risk Disclosure</a>
-                    <a class="footer-link" href="https://www.tradertok.com/key-information-documents">Key Information Documents</a>
-                </div>
-            </div>
-            <div>
-                <div class="footer-title">PARTNERS AND PROMOTIONS</div>
-                <div class="footer-links">
-                    <a class="footer-link" href="https://www.tradertok.com/invite-a-friend">Invite a Friend</a>
-                    <a class="footer-link" href="https://www.tradertok.com/ib-program">IB Program</a>
-                    <a class="footer-link" href="https://www.tradertok.com/tradertok-club">TraderTok Club</a>
-                    <a class="footer-link" href="https://www.tradertok.com/segregated-account">Segregated Account</a>
-                    <a class="footer-link" href="https://www.tradertok.com/offers-promotions">Offers &amp; Promotions</a>
-                </div>
+            <div class="footer-payments" aria-label="Payment methods">
+                <img style="max-width:28px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg/3840px-Visa_Inc._logo_%282021%E2%80%93present%29.svg.png" alt="Visa">
+                <img style="max-width:28px;" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
             </div>
         </div>
-        <div class="container footer-subbar-inner">
-            <p class="footer-subbar-copy">
-                <span class="footer-subbar-copy-symbol">©</span> 2026 <span
-                    data-i18n="footer.subbarCopyrightRest">TraderTok / Amber Rock Trade Ltd. All rights reserved.</span>
-            </p>
+        <div>
+            <div class="footer-title">Legal</div>
+            <div class="footer-links">
+                <a class="footer-link" href="./privacy.html">Privacy Policy</a>
+                <a class="footer-link" href="./regulations.html">Regulations</a>
+            </div>
         </div>
-    </footer>
+    </div>
+
+    <div class="footer-regulatory">
+        <p>&copy; 2026 Amber Rock Trade Ltd. Level 5, Alexander House, 35 Cybercity, 72201 Ebene, Mauritius. Company No: 222594. <a href="#" style="color:var(--accent);text-decoration:none;">License No: GB24203892</a>. Amber Rock Trade Ltd is authorized and regulated by the Financial Services Commission of Mauritius (FSC).</p>
+        <p>This website is operated by Amber Rock Trade Ltd. Payment processing services are provided by the Company&apos;s authorized payment agent, B-Tech Ltd, registered at Louki Akrita 1, Akritas Court, 3rd Floor, Flat/Office 301, 3030 Limassol, Cyprus (Company No: HE 414065).</p>
+        <p><span class="risk-warning">Risk Warning:</span> Trading in derivative financial instruments, including CFDs and other leveraged products, carries a high level of risk and may not be suitable for all investors. You may lose all or more than your initial investment. Trading is subject to market volatility, leverage risk, and other risks. You should only trade with funds you can afford to lose. Before engaging in trading activities, please ensure that you fully understand the risks involved. If necessary, seek independent professional advice.</p>
+    </div>
+
+    <div class="footer-subbar-inner">
+        <p class="footer-subbar-copy">&copy; 2026 TraderTok / Amber Rock Trade Ltd. All rights reserved.</p>
+        <div class="footer-partners">
+            <div class="footer-partner"><img src="./assets/images/mt5.png" alt="MetaTrader 5" style="height:22px;width:auto;object-fit:contain;vertical-align:middle;"></div>
+            <div class="footer-partner">Web Trader</div>
+        </div>
+    </div>
+</footer>
 
     <script>
         (async () => {
