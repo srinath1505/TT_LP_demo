@@ -118,6 +118,58 @@
     .qual-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     @media(max-width:480px){ .qual-grid-2 { grid-template-columns:1fr; } }
     </style>
+
+    <!-- Background design -->
+    <style>
+    .education-subpage.education-subpage--register {
+        position: relative;
+        overflow: hidden;
+        background-image:
+            linear-gradient(rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.78) 100%),
+            url('./assets/images/create_acc.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .section-bg-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+    .section-bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 28px 28px;
+    }
+    .section-bg-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+    }
+    .ca-orb-a {
+        width: 700px; height: 700px;
+        top: -240px; right: -200px;
+        background: radial-gradient(circle, rgba(208,44,45,0.30) 0%, transparent 65%);
+    }
+    .ca-orb-b {
+        width: 440px; height: 440px;
+        bottom: -100px; left: -100px;
+        background: radial-gradient(circle, rgba(180,70,0,0.20) 0%, transparent 65%);
+    }
+    .education-subpage-content.education-subpage-content--register-page {
+        position: relative;
+        z-index: 1;
+    }
+    .registration-account-card {
+        background: rgba(8,8,8,0.96) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+    }
+    </style>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFLLNNTD"
@@ -138,7 +190,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
 </nav>
 
-<section class="education-subpage-content" style="padding-top:100px; padding-bottom:60px;">
+<section class="education-subpage education-subpage--register">
+
+    <div class="section-bg-layer" aria-hidden="true">
+        <div class="section-bg-grid"></div>
+        <div class="section-bg-orb ca-orb-a"></div>
+        <div class="section-bg-orb ca-orb-b"></div>
+    </div>
+
+    <section class="education-subpage-content education-subpage-content--register-page" style="padding-top:100px; padding-bottom:60px;">
     <div class="container" style="max-width:560px;">
         <div class="registration-account-card">
             <div class="education-article-meta">Create Account</div>
@@ -235,6 +295,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </form>
         </div>
     </div>
+    </section>
 </section>
 
 <footer id="lp-footer" class="site-footer">
